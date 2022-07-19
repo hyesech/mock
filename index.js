@@ -62,18 +62,15 @@ const mock = [
 ];
 
 app.get('/', (req, res) => {
+    console.log(req);
     const html = mock.map((data) => generatePostItem(data));
+    console.log(html);
 
-    const response = {
+    res.send({
         status: 200,
-        message: '성공...',
+        message: '포스트 리스트 응답 성공',
         data: html,
-        total_items: 6,
-        total_pages: 5,
-        page: 1,
-        current: 1,
-    };
-    res.send(JSON.stringify(response));
+    });
 });
 
 app.post('/', (req, res) => {
